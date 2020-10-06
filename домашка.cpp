@@ -7,7 +7,7 @@ using namespace std;
 int main() 
 {
 	setlocale(LC_ALL, "Russian");
-	int numHomework(-1), exercise_1(-1), exercise_2(-1), exercise_3(-1);
+	int numHomework(-1)/*, exercise_1(-1), exercise_2(-1), exercise_3(-1)*/;
 	while (numHomework != 0)
 	{
 		cout << " Введите номер Домашней Работы : ";
@@ -29,17 +29,17 @@ int main()
 				cout << " №4 - Квадратное уравнение " << endl;
 				cout << " №5 - Лампа со шторой " << endl;
 				cout << " Введите 0 для завершения ДР_1 " << endl;
-				while (exercise_1 != 0)
+				while (numHomework != 0)
 				{
 					cout << " Выберите номер задания : ";
-					cin >> exercise_1;
-					if ((exercise_1 < 0) || (exercise_1 > 5))
+					cin >> numHomework;
+					if ((numHomework < 0) || (numHomework > 5))
 					{
 						cout << " Введены некорректные данные " << endl;
 					}
 					else
 					{
-						switch (exercise_1)
+						switch (numHomework)
 						{
 						case 1:
 						{
@@ -141,9 +141,9 @@ int main()
 					}
 				}
 				cout << " Домашняя работа_1 завершена " << endl;
-				if (exercise_1 == 0)
+				if (numHomework == 0)
 				{
-					exercise_1 = -1;
+					numHomework = -1;
 				}
 				break;
 			}	  //  ДЗ_1 завершено
@@ -156,17 +156,17 @@ int main()
 				cout << " №4 - Порядок " << endl;
 				cout << " №5 - Табуляция " << endl;
 				cout << " Введите 0 для завершения ДР_2 " << endl;
-				while (exercise_2 != 0)
+				while (numHomework != 0)
 				{
 					cout << " Выберите номер задания : ";
-					cin >> exercise_2;
-					if ((exercise_2 < 0) || (exercise_2 > 5))
+					cin >> numHomework;
+					if ((numHomework < 0) || (numHomework > 5))
 					{
 						cout << " Введены некорректные данные " << endl;
 					}
 					else
 					{
-						switch (exercise_2)
+						switch (numHomework)
 						{
 						case 1:
 						{
@@ -261,9 +261,9 @@ int main()
 					}
 				}
 				cout << " Домашняя работа_2 завершена " << endl;
-				if (exercise_2 == 0)
+				if (numHomework == 0)
 				{
-					exercise_2 = -1;
+					numHomework = -1;
 				}
 				break;
 			}    // ДЗ_2 завершено 
@@ -276,17 +276,17 @@ int main()
 				//cout << " №4 - Фильтр " << endl;
 				//cout << " №5 - Сортировка букв " << endl;
 				cout << " Введите 0 для завершения ДР_3 " << endl;
-				while (exercise_3 != 0)
+				while (numHomework != 0)
 				{
 					cout << " Выберите номер задания : ";
-					cin >> exercise_3;
-					if ((exercise_3 < 0) || (exercise_3 > 3))
+					cin >> numHomework;
+					if ((numHomework < 0) || (numHomework > 3))
 					{
 						cout << " Введены некорректные данные " << endl;
 					}
 					else
 					{
-						switch (exercise_3)
+						switch (numHomework)
 						{
 						case 1:
 						{
@@ -342,28 +342,30 @@ int main()
 							}
 							fs.close();*/
 							ofstream file;
-							file.open(path);
-							if (!file)
+							file.open(path, ofstream::app);
+							if (!file.is_open())
 							{
 								cout << " Error " << endl;
 							}
 							else
-							{
-								cout << " Введите ваше сообщение " << endl;
+							{ 
+								cout << " Введите ваше сообщение: ";
 								SetConsoleCP(1251);
-								cin >> text;
-								file << text << endl;
+								getline(cin, text);
+								file << text;
 								SetConsoleCP(866);
 							}
 							file.close();
+							cout << endl;
 						    ifstream file2;
-							/*file2.open(path);
+							file2.open(path);
 							if (!file2.is_open())
 							{
 								cout << " Error " << endl;
 							}
 							else
 							{
+								cout << " Ваше сообщение: ";
 								while (!file2.eof())
 								{
 									text = "";
@@ -371,8 +373,7 @@ int main()
 									cout << text << endl;
 								}
 							} 	
-							//file2.clear();
-							file2.close();*/
+							file2.close();
 							break;
 						} // заданаие 3 завершено
 						//case 4:
@@ -386,9 +387,9 @@ int main()
 					}
 				}
 				cout << " Домашняя работа_3 завершена " << endl;
-				if (exercise_3 == 0)
+				if (numHomework == 0)
 				{
-					exercise_3 = -1;
+					numHomework = -1;
 				}
 				break;
 			}	//ДЗ_3 завершено
